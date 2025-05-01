@@ -6,4 +6,4 @@ print('Riddle: How do you say SGVsbG8sIFdvcmxkIQ== in English?')
 passphrase = input("Enter the passphrase: ")
 
 # Check if the passphrase is correct and generate the key (offset)
-key = generate_key(passphrase)
+generate_key(passphrase)

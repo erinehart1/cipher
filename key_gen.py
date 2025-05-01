@@ -6,11 +6,13 @@ def generate_key(passphrase):
     try:
         decoded_passphrase = base64.b64decode(passphrase).decode('utf-8')
     except Exception as e:
-        return f"Error: {e}"
+        print(f"Error: {e}")
+        return
 
     # Check if the decoded passphrase is exactly "Hello, World!"
     if decoded_passphrase != "Hello, World!":
-        return "Error: Passphrase is incorrect."
+        print("Error: Passphrase is incorrect.")
+        return
 
     # Generate the Caesar cipher offset based on "Hello, World!"
     # We ignore spaces and punctuation to count only the letters
@@ -20,4 +22,15 @@ def generate_key(passphrase):
     # Apply Caesar cipher shift of 5
     final_offset = offset + 5  # Add the offset of 5
 
-    return str(final_offset)  # Return the offset as a string (this will be the 'key')
+    print("Hail, Caesar! Here's your key: " + str(final_offset))  # Output the key
+
+# If you want the logic to run when this file is executed directly
+if __name__ == "__main__":
+    # Passphrase riddle
+    print('Riddle: How do you say SGVsbG8sIFdvcmxkIQ== in English?')
+
+    # User enters the passphrase (Base64 encoded string)
+    passphrase = input("Enter the passphrase: ")
+
+    # Generate key and handle the print directly
+    generate_key(passphrase)
